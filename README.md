@@ -1,4 +1,25 @@
-# answerpg
+<p align="center">
+  <img src="docs/banner.svg" width="100%" alt="answerpg: cited answers over your docs from PostgreSQL + pgvector">
+</p>
+
+<p align="center">
+  <a href="https://github.com/lzradeel/answerpg/actions/workflows/checks.yml"><img src="https://github.com/lzradeel/answerpg/actions/workflows/checks.yml/badge.svg" alt="checks"></a>
+  <img src="https://img.shields.io/badge/python-3.11%2B-3776AB?logo=python&logoColor=white" alt="Python 3.11+">
+  <img src="https://img.shields.io/badge/FastAPI-009688?logo=fastapi&logoColor=white" alt="FastAPI">
+  <img src="https://img.shields.io/badge/PostgreSQL%2017-pgvector-4169E1?logo=postgresql&logoColor=white" alt="PostgreSQL 17 with pgvector">
+  <img src="https://img.shields.io/badge/Docker-Compose-2496ED?logo=docker&logoColor=white" alt="Docker Compose">
+</p>
+
+<p align="center">
+  <a href="#how-a-question-is-answered">Pipeline</a> ·
+  <a href="#quality-gate">Quality gate</a> ·
+  <a href="#quickstart">Quickstart</a> ·
+  <a href="#api">API</a> ·
+  <a href="#latency-and-cost">Latency and cost</a> ·
+  <a href="#limitations">Limitations</a>
+</p>
+
+<p align="center"><sub>recall@5 0.963 · MRR 0.872 · 40-question quality gate in CI · CPU-only reranking</sub></p>
 
 Questions over a document collection are answered by answerpg, and each answer sentence is tied to the passage it was drawn from. Passages are stored, searched and logged in one PostgreSQL database with pgvector, and quality drops are caught by a CI gate before they are merged.
 

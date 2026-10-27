@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="320" viewBox="0 0 1280 320" role="img" aria-labelledby="title desc">
+  <title id="title">answerpg: cited answers over your docs from PostgreSQL + pgvector</title>
+  <desc id="desc">Banner for answerpg. A question is sent to a keyword retriever and a semantic retriever, both running in PostgreSQL; their results are merged by rank fusion, reordered by a reranker and returned as an answer card with citation markers [1] and [2]. Chips list BM25 in SQL, pgvector HNSW, rank fusion, cross-encoder rerank and CI quality gate.</desc>
+  <style>
+    .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace; }
+    .chip rect { fill: #94A3B8; fill-opacity: .1; stroke: #94A3B8; stroke-opacity: .28; }
+    .chip text { fill: #CBD5E1; font-size: 18px; font-weight: 500; text-anchor: middle; }
+    .label { fill: #CBD5E1; font-size: 18px; font-weight: 500; text-anchor: middle; }
+    .node { fill: #0E1631; stroke: url(#accent); stroke-width: 1.5; }
+    .glyph { fill: #E2E8F0; font-weight: 700; text-anchor: middle; }
+    .stroke { fill: none; stroke: #E2E8F0; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+    .flow { fill: none; stroke: #C7D2FE; stroke-width: 3; stroke-linecap: round; stroke-dasharray: 0.1 16; animation: flow 8s linear infinite; }
+    .pulse { animation: pulse 8s ease-in-out infinite; }
+    @keyframes flow { to { stroke-dashoffset: -160; } }
+    @keyframes pulse { 50% { opacity: .5; } }
+    @media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
+  </style>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A0F1E"/>
+      <stop offset="1" stop-color="#131C3A"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="lane" gradientUnits="userSpaceOnUse" x1="678" y1="0" x2="1008" y2="0">
+      <stop offset="0" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="pg" gradientUnits="userSpaceOnUse" x1="295" y1="0" x2="372" y2="0">
+      <stop offset="0" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <linearGradient id="pgsmall" gradientUnits="userSpaceOnUse" x1="752" y1="0" x2="776" y2="0">
+      <stop offset="0" stop-color="#818CF8"/>
+      <stop offset="1" stop-color="#22D3EE"/>
+    </linearGradient>
+    <radialGradient id="glow" gradientUnits="userSpaceOnUse" cx="930" cy="160" r="330">
+      <stop offset="0" stop-color="#6366F1" stop-opacity=".26"/>
+      <stop offset="1" stop-color="#6366F1" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="12" cy="12" r="1.2" fill="#94A3B8"/>
+    </pattern>
+    <clipPath id="frame">
+      <rect width="1280" height="320" rx="24"/>
+    </clipPath>
+  </defs>
+
+  <!-- background card: gradient, dot grid, glow behind the motif -->
+  <g clip-path="url(#frame)">
+    <rect width="1280" height="320" fill="url(#bg)"/>
+    <rect width="1280" height="320" fill="url(#dots)" opacity=".08"/>
+    <rect width="1280" height="320" fill="url(#glow)"/>
+  </g>
+  <rect x=".5" y=".5" width="1279" height="319" rx="23.5" fill="none" stroke="#94A3B8" stroke-opacity=".14"/>
+
+  <!-- text column -->
+  <text class="mono" x="64" y="89" font-size="64" font-weight="700" fill="#F1F5F9">answer<tspan fill="url(#pg)">pg</tspan></text>
+  <g class="sans" font-size="26" fill="#94A3B8">
+    <text x="64" y="134">Cited answers over your docs</text>
+    <text x="64" y="166">from <tspan fill="#E2E8F0">PostgreSQL + pgvector</tspan></text>
+  </g>
+  <g class="sans chip">
+    <rect x="64" y="190" width="142" height="34" rx="16"/>
+    <text x="135" y="213.5">BM25 in SQL</text>
+    <rect x="216" y="190" width="168" height="34" rx="16"/>
+    <text x="300" y="213.5">pgvector HNSW</text>
+    <rect x="394" y="190" width="128" height="34" rx="16"/>
+    <text x="458" y="213.5">rank fusion</text>
+    <rect x="64" y="234" width="214" height="34" rx="16"/>
+    <text x="171" y="257.5">cross-encoder rerank</text>
+    <rect x="288" y="234" width="154" height="34" rx="16"/>
+    <text x="365" y="257.5">CI quality gate</text>
+  </g>
+
+  <!-- motif: question, two retrievers in Postgres, fusion, rerank, cited answer -->
+  <g fill="none" stroke="url(#lane)" stroke-width="2" stroke-opacity=".55">
+    <path d="M678 160C714 160 720 104 744 104H784C820 104 826 160 856 160"/>
+    <path d="M678 160C714 160 720 216 744 216H784C820 216 826 160 856 160"/>
+    <path d="M856 160H1008"/>
+  </g>
+  <path class="flow" d="M678 160C714 160 720 104 744 104H784C820 104 826 160 856 160H1008"/>
+  <path class="flow" d="M678 160C714 160 720 216 744 216H784C820 216 826 160 856 160H1008"/>
+
+  <!-- both retrievers read the same PostgreSQL tables -->
+  <path d="M764 127V138M764 182V193" stroke="#94A3B8" stroke-opacity=".6" stroke-width="1.5" stroke-dasharray="2 3"/>
+  <path d="M746 146V174A18 6 0 0 0 782 174V146" fill="#0E1631" stroke="#94A3B8" stroke-opacity=".75" stroke-width="1.5"/>
+  <ellipse cx="764" cy="146" rx="18" ry="6" fill="#0E1631" stroke="#94A3B8" stroke-opacity=".75" stroke-width="1.5"/>
+  <text class="mono" x="764" y="171" font-size="18" font-weight="700" fill="url(#pgsmall)" text-anchor="middle">pg</text>
+
+  <!-- question bubble -->
+  <path d="M646 141H666A12 12 0 0 1 678 153V167A12 12 0 0 1 666 179H652L640 189L642 178A12 12 0 0 1 634 167V153A12 12 0 0 1 646 141Z" fill="#0E1631" stroke="url(#accent)" stroke-width="1.5"/>
+  <text class="mono glyph" x="656" y="168" font-size="22">?</text>
+
+  <!-- stage nodes: keyword (Aa), semantic (≈), fusion (Σ), rerank (⇅) -->
+  <circle class="node" cx="764" cy="104" r="20"/>
+  <circle class="node" cx="764" cy="216" r="20"/>
+  <circle class="node" cx="876" cy="160" r="20"/>
+  <circle class="node" cx="956" cy="160" r="20"/>
+  <text class="sans glyph" x="764" y="110.5" font-size="18">Aa</text>
+  <text class="sans glyph" x="764" y="224" font-size="26">≈</text>
+  <text class="sans glyph" x="876" y="167" font-size="20">Σ</text>
+  <path class="stroke" d="M951 168V152M947 156L951 152L955 156M961 152V168M957 164L961 168L965 164"/>
+
+  <g class="sans label">
+    <text x="764" y="70">keyword</text>
+    <text x="764" y="260">semantic</text>
+    <text x="876" y="206">fusion</text>
+    <text x="956" y="206">rerank</text>
+  </g>
+
+  <!-- answer card -->
+  <rect x="1008" y="73" width="208" height="174" rx="16" fill="#F8FAFC" fill-opacity=".05" stroke="url(#accent)" stroke-opacity=".7" stroke-width="1.5"/>
+  <circle cx="1008" cy="160" r="4" fill="#22D3EE"/>
+  <text class="mono" x="1028" y="105" font-size="18" fill="#94A3B8">answer</text>
+  <path d="M1028 121H1196" stroke="#94A3B8" stroke-opacity=".2"/>
+  <g fill="#CBD5E1" fill-opacity=".3">
+    <rect x="1028" y="141" width="112" height="8" rx="4"/>
+    <rect x="1028" y="167" width="168" height="8" rx="4"/>
+    <rect x="1028" y="193" width="92" height="8" rx="4"/>
+    <rect x="1028" y="219" width="128" height="8" rx="4"/>
+  </g>
+  <g class="mono" font-size="18" font-weight="700" text-anchor="middle">
+    <rect class="pulse" x="1148" y="133" width="42" height="24" rx="7" fill="#818CF8" fill-opacity=".22" stroke="#818CF8" stroke-opacity=".6"/>
+    <text x="1169" y="151.5" fill="#E0E7FF">[1]</text>
+    <rect class="pulse" x="1128" y="185" width="42" height="24" rx="7" fill="#22D3EE" fill-opacity=".18" stroke="#22D3EE" stroke-opacity=".6"/>
+    <text x="1149" y="203.5" fill="#CFFAFE">[2]</text>
+  </g>
+</svg>
