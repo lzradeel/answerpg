@@ -1,0 +1,10 @@
+{
+  "tolerance": 0.02,
+  "metrics": {
+    "recall@5": 0.963,
+    "mrr": 0.872,
+    "faithfulness": 1.0,
+    "answer_relevance": 0.798,
+    "answer_similarity": 0.778
+  }
+}
