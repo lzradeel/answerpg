@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: pgvector/pgvector:pg17
+    environment:
+      POSTGRES_USER: answerpg
+      POSTGRES_PASSWORD: answerpg
+      POSTGRES_DB: answerpg
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U answerpg -d answerpg"]
+      interval: 2s
+      timeout: 5s
+      retries: 30
+
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgresql://answerpg:answerpg@postgres:5432/answerpg
+      ANSWER_BACKEND: ${ANSWER_BACKEND:-extractive}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      API_TOKEN: ${API_TOKEN:-}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/healthz', timeout=3)"
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+volumes:
+  pg_data:
